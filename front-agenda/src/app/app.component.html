@@ -1,0 +1,22 @@
+<ng-container>
+  <mat-toolbar class="main-header">
+    <span>My Application</span>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true" [fixedTopGap]="60"
+      [fixedBottomGap]="0">
+      <mat-list>
+        <mat-list-item>
+          <button color="primary" routerLink="/reservar" mat-raised-button>Reservar</button>
+        </mat-list-item>
+        <mat-list-item> <a> Dar asco </a> </mat-list-item>
+        <mat-list-item> <a> Dar pena </a> </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">Footer</mat-toolbar>
+</ng-container>

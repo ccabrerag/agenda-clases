@@ -1,5 +1,7 @@
 # agenda-clases
 
-## Levantar mongo : sudo docker-compose up -d 
+## Levantar mongo: sudo docker-compose up -d 
 
-## Levantar api :  ./gradlew bootRun
+## Levantar api:  ./gradlew bootRun
+
+## Levantar front: ng serve 
