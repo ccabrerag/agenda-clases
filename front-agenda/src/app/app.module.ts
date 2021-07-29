@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReservarSalaComponent } from './reservar-sala/reservar-sala.component';
+import { ReservarSalaComponent } from './pages/reservar-sala/reservar-sala.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,12 +17,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { SeleccionarHorarioComponent } from './seleccionar-horario/seleccionar-horario.component';
 
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, ReservarSalaComponent, SeleccionarHorarioComponent],
+  declarations: [AppComponent, ReservarSalaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,12 +37,11 @@ import { SeleccionarHorarioComponent } from './seleccionar-horario/seleccionar-h
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
-    
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   entryComponents: [ReservarSalaComponent],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}
