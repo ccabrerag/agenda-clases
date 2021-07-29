@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,12 +31,11 @@ public class AgendaController {
 
 	@CrossOrigin(origins = "*")
 	@PostMapping("/agenda")
-	public Agenda agendar() {
-
+	public Agenda agendar(@RequestBody Agenda body) {
 
 
 		Agenda agendaMock = new Agenda('1', "profe@mail.com", "17/07/2021 10:00:00", "17/07/2021 12:00:00");
 
-		return agendaMock;
+		return body;
 	}
 }
