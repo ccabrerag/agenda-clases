@@ -17,11 +17,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { SeleccionarHorarioComponent } from './seleccionar-horario/seleccionar-horario.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, ReservarSalaComponent],
+  declarations: [AppComponent, ReservarSalaComponent, SeleccionarHorarioComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
