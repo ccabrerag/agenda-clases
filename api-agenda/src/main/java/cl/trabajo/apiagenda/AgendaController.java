@@ -5,36 +5,40 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @RestController
 public class AgendaController {
 
+
+	private static final Logger logger = LogManager.getLogger(AgendaController.class);
+
+	@Autowired
+  	private AgendaRepository repository;
+
 	@CrossOrigin(origins = "*")
 	@GetMapping("/agenda")
-	public ArrayList<Agenda> obtenerAgenda() {
-		Agenda primerRegistro = new Agenda('1', "profe@mail.com", "17/07/2021 10:00:00", "17/07/2021 12:00:00");
-		Agenda segundoRegistro = new Agenda('1', "profe@mail.com", "17/07/2021 15:00:00", "17/07/2021 17:00:00");
+	public List<Agenda> obtenerAgenda() {
+		List<Agenda> response = repository.findAll();
+		return response;
 
-
-		ArrayList<Agenda> agenda = new ArrayList<Agenda>();
-
-		agenda.add(segundoRegistro);
-		agenda.add(primerRegistro);
-
-        return agenda;
 	}
 
 	@CrossOrigin(origins = "*")
 	@PostMapping("/agenda")
 	public Agenda agendar(@RequestBody Agenda body) {
-
-
-		Agenda agendaMock = new Agenda('1', "profe@mail.com", "17/07/2021 10:00:00", "17/07/2021 12:00:00");
+		
+	repository.save(body);
+	logger.info("feo");
 
 		return body;
 	}

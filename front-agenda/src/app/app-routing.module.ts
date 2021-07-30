@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReservarSalaComponent } from './pages/reservar-sala/reservar-sala.component';
 
 
+
 const routes: Routes = [
   { path: 'reservar', component: ReservarSalaComponent},
 ];

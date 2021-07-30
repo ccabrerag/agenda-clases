@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpProvider } from '../providers/http.provider';
 
 @Injectable({
@@ -7,9 +8,7 @@ import { HttpProvider } from '../providers/http.provider';
 export class ReservasService {
   constructor(private http: HttpProvider) {}
 
-  generarReserva(reserva: any) {
-    this.http.post('http://localhost:8080/agenda', reserva).subscribe((res) => {
-      console.log('RES: ', res);
-    });
+  generarReserva(reserva: any):Observable<any> {
+    return this.http.post('http://localhost:8080/agenda', reserva);
   }
 }

@@ -5,13 +5,13 @@ import java.util.Date;
 public class Agenda {
 
     private int sala;
-    private String emailProgesor;
+    private String emailProfesor;
     private String fechaInicio;
     private String fechaFin;
 
-    public Agenda(int sala, String emailProgesor, String fechaInicio, String fechaFin) {
+    public Agenda(int sala, String emailProfesor, String fechaInicio, String fechaFin) {
         this.sala = sala;
-        this.emailProgesor = emailProgesor;
+        this.emailProfesor = emailProfesor;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
@@ -24,12 +24,12 @@ public class Agenda {
         this.sala = sala;
     }
 
-    public String getEmailProgesor() {
-        return emailProgesor;
+    public String getemailProfesor() {
+        return emailProfesor;
     }
 
-    public void setEmailProgesor(String emailProgesor) {
-        this.emailProgesor = emailProgesor;
+    public void setemailProfesor(String emailProfesor) {
+        this.emailProfesor = emailProfesor;
     }
 
     public String getFechaInicio() {
