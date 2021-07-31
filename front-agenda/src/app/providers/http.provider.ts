@@ -11,4 +11,9 @@ export class HttpProvider {
   post(endpoint: string, body: any) {
     return this.http.post(endpoint, body);
   }
+
+  get(endpoint: string) {
+    return this.http.get(endpoint);
+  }
+  
 }

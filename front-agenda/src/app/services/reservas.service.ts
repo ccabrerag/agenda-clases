@@ -11,4 +11,10 @@ export class ReservasService {
   generarReserva(reserva: any):Observable<any> {
     return this.http.post('http://localhost:8080/agenda', reserva);
   }
+
+  obtenerAgenda():Observable<any>{
+    return this.http.get('http://localhost:8080/agenda');
+  }
+
+
 }

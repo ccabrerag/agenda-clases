@@ -1,46 +1,59 @@
-<p>Ingrese los datos para la reserva de Sala</p>
-<p></p>
+<div *ngIf="view==='form'">
+
+    <p>Ingrese los datos para la reserva de Sala</p>
 
 
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Email Docente</mat-label>
-    <input matInput placeholder="correo@mail.com" [(ngModel)]="emailDocente">
-</mat-form-field>
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email Docente</mat-label>
+            <input matInput placeholder="correo@mail.com" [(ngModel)]="emailDocente">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione Sala</mat-label>
+            <mat-select (ngModelChange)="changeSala($event)" [disabled]="!emailDocente" [(ngModel)]="sala">
+                <mat-option *ngFor="let sala of salas" [value]="sala">
+                    {{sala}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione fecha</mat-label>
+            <input (ngModelChange)="changeDia($event)" [(ngModel)]="fecha" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione Hora</mat-label>
+            <mat-select [disabled]="!emailDocente||!sala||!agenda" [(ngModel)]="hour">
+                <mat-option [disabled]="!hour.enabled" *ngFor="let hour of hours" [value]="hour">
+                    {{hour.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
 
 
-<mat-form-field appearance="fill">
-    <mat-label>Seleccione Sala</mat-label>
-    <mat-select [disabled]="!emailDocente" [(ngModel)]="sala">
-        <mat-option *ngFor="let sala of salas" [value]="sala">
-            {{sala}}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
 
-<mat-form-field appearance="fill">
-    <mat-label>Seleccione fecha</mat-label>
-    <input [(ngModel)]="fecha" matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+    <p>
+        <mat-list-item>
+            <button [disabled]="!emailDocente||!fecha||!sala" color="primary" (click)="reservar()"
+                mat-raised-button>Reservar</button>
+        </mat-list-item>
+    </p>
 
+    <p>
+        <mat-list-item>
+            <button color="primary" routerLink="/" mat-raised-button>Volver</button>
+        </mat-list-item>
+    </p>
 
-<mat-form-field appearance="fill">
-    <mat-label>Seleccione Hora</mat-label>
-    <mat-select [disabled]="!emailDocente" [(ngModel)]="hour">
-        <mat-option *ngFor="let hour of hours" [value]="hour">
-            {{hour.label}}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
-
-
-
-
-<mat-list-item>
-    <button [disabled]="!emailDocente||!fecha||!sala" color="primary" (click)="reservar()"
-        mat-raised-button>Reservar</button>
-</mat-list-item>
-<mat-list-item>
-    <button color="primary" routerLink="/" mat-raised-button>Volver</button>
-</mat-list-item>
+</div>
+<div *ngIf="view==='success'">Reserva realizada</div>
+<div *ngIf="view==='error'">Error</div>
