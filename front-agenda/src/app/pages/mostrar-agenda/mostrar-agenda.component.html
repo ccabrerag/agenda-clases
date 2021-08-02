@@ -1,0 +1,45 @@
+<p>mostrar-agenda works!</p>
+
+<p>
+    <mat-form-field appearance="fill">
+        <mat-label>Seleccione fecha</mat-label>
+        <input (ngModelChange)="changeDia($event)" [(ngModel)]="fecha" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</p>
+
+
+<table mat-table [hidden]="!fecha" [dataSource]="algo">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Position Column -->
+    <ng-container matColumnDef="curso">
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
+        <td mat-cell *matCellDef="let algo"> {{algo.curso}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let algo"> {{algo.fechaInicio}} </td>
+    </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="sala">
+        <th mat-header-cell *matHeaderCellDef> Sala </th>
+        <td mat-cell *matCellDef="let algo"> {{algo.sala}} </td>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="emailProfe">
+        <th mat-header-cell *matHeaderCellDef> Email Profesor </th>
+        <td mat-cell *matCellDef="let algo"> {{algo.emailProfesor}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> 
+
+
+<p>
+    <mat-list-item>
+        <button color="primary" routerLink="/" mat-raised-button>Volver</button>
+    </mat-list-item>
+</p>

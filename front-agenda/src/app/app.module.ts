@@ -18,11 +18,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AgGridModule } from 'ag-grid-angular';
+import { MostrarAgendaComponent } from './pages/mostrar-agenda/mostrar-agenda.component';
+import { AgendaLoginComponent } from './pages/agenda-login/agenda-login.component';
+import { CookieService } from 'ngx-cookie-service';
+import { HomeComponent } from './pages/home/home.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, ReservarSalaComponent],
+  declarations: [AppComponent, ReservarSalaComponent, MostrarAgendaComponent, AgendaLoginComponent, HomeComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,10 +47,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatSelectModule,
     HttpClientModule,
-    MatGridListModule
-  ],
-  providers: [],
-  entryComponents: [ReservarSalaComponent],
+    MatGridListModule,
+    AgGridModule.withComponents([]),
+    MatTableModule
+    ],
+  providers: [CookieService],
+  entryComponents: [ReservarSalaComponent,AgendaLoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

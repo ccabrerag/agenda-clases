@@ -1,0 +1,25 @@
+<div class="register">
+
+    <form class="custom-form" method="post">
+        <h1>Register</h1>
+        <input type="email" [(ngModel)]="user" name="user" placeholder="Email" required="required" />
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
+  
+        <button type="submit" (click)="register()">Register</button>
+
+    </form>
+    <div>
+        <mat-label>Seleccione Permisos</mat-label>
+        <p></p>
+        <mat-label>Administrador = 1</mat-label>
+        <p></p>
+        <mat-label>Usuario = 2</mat-label>
+        <p></p>
+        <mat-select [(ngModel)]="nivel" placeholder=1>
+            <mat-option *ngFor="let nivel of niveles" [value]="nivel">
+                {{nivel}}
+            </mat-option>
+        </mat-select>
+    </div>
+
+</div>

@@ -13,12 +13,8 @@ export class ReservarSalaComponent implements OnInit {
   fecha: Date;
   emailDocente: any;
   sala: any;
-
   view: string = 'form';
   agenda: any[] = [];
-
-
-
   salas = [1, 2, 3, 4, 5, 6];
   hour: any;
   hours = [
@@ -28,6 +24,10 @@ export class ReservarSalaComponent implements OnInit {
     { label: '12:00-13:00', start: 12, end: 13, enabled: true },
     { label: '13:00-14:00', start: 13, end: 14, enabled: true },
     { label: '14:00-15:00', start: 14, end: 15, enabled: true }];
+
+  curso: any;
+  cursos = ['GPSW1','GPSW2','THD1','THD2'];
+
 
   constructor(private reservas: ReservasService, private router: Router) {
     this.fecha = new Date();
@@ -47,6 +47,7 @@ export class ReservarSalaComponent implements OnInit {
       fechaFin: fin,
       emailProfesor: this.emailDocente,
       sala: this.sala,
+      curso: this.curso
     };
 
     console.log(reserva);
@@ -68,17 +69,17 @@ export class ReservarSalaComponent implements OnInit {
     });
   }
 
-  changeDia(event:any){
-    this.filtrarHoras(event,this.sala);
+  changeDia(event: any) {
+    this.filtrarHoras(event, this.sala);
   }
-  changeSala(event:any){
-    this.filtrarHoras(this.fecha,event)
+  changeSala(event: any) {
+    this.filtrarHoras(this.fecha, event)
   }
 
 
-  filtrarHoras(dia:Date,sala:number) {
-    this.hours.forEach((h)=>{
-      h.enabled=true;
+  filtrarHoras(dia: Date, sala: number) {
+    this.hours.forEach((h) => {
+      h.enabled = true;
     })
     console.log(this.hours)
     this.hour = undefined;
@@ -91,11 +92,7 @@ export class ReservarSalaComponent implements OnInit {
       let dia = fecha.toLocaleDateString();
       //console.log({dia,diaSeleccionado});
 
-      if (dia === diaSeleccionado&&reserva.sala===sala) {
-        console.log(dia,diaSeleccionado);
-        console.log(reserva.sala,this.sala);
-        console.log(this.hours)
-        console.log(reserva);
+      if (dia === diaSeleccionado && reserva.sala === sala) {
         this.hours.forEach((h) => {
           if (h.start === hora) {
             h.enabled = false;
@@ -104,6 +101,10 @@ export class ReservarSalaComponent implements OnInit {
       }
     });
 
+  }
+
+  backtoHome() {
+    this.router.navigate(['/']);
   }
 
 

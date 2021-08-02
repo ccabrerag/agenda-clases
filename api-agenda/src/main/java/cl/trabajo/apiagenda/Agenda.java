@@ -8,14 +8,18 @@ public class Agenda {
     private String emailProfesor;
     private String fechaInicio;
     private String fechaFin;
+    private String curso;
 
-    public Agenda(int sala, String emailProfesor, String fechaInicio, String fechaFin) {
-        this.sala = sala;
-        this.emailProfesor = emailProfesor;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+
+    public Agenda(int sala, String emailProfesor, String fechaInicio, String fechaFin, String curso) {
+    this.sala = sala;
+    this.emailProfesor = emailProfesor;
+    this.fechaInicio = fechaInicio;
+    this.fechaFin = fechaFin;
+    this.curso = curso;
     }
 
+    
     public int getSala() {
         return sala;
     }
@@ -46,5 +50,13 @@ public class Agenda {
 
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+     public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 }

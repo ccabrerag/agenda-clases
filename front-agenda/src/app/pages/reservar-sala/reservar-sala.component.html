@@ -21,6 +21,17 @@
     </p>
     <p>
         <mat-form-field appearance="fill">
+            <mat-label>Seleccione Curso</mat-label>
+            <mat-select [disabled]="!emailDocente" [(ngModel)]="curso">
+                <mat-option *ngFor="let curso of cursos" [value]="curso">
+                    {{curso}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+   
+    <p>
+        <mat-form-field appearance="fill">
             <mat-label>Seleccione fecha</mat-label>
             <input (ngModelChange)="changeDia($event)" [(ngModel)]="fecha" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -55,5 +66,10 @@
     </p>
 
 </div>
-<div *ngIf="view==='success'">Reserva realizada</div>
-<div *ngIf="view==='error'">Error</div>
+<div *ngIf="view==='success'">Reserva realizada
+    <p><button (click)="backtoHome()">Volver</button></p>
+
+</div>
+<div *ngIf="view==='error'">Error
+    <p><button color="primary" (click)="backtoHome()">Volver</button></p>
+</div>

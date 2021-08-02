@@ -17,25 +17,17 @@ import java.util.List;
 
 
 @RestController
-public class AgendaController {
+public class UserController {
 
 
-	private static final Logger logger = LogManager.getLogger(AgendaController.class);
+	private static final Logger logger = LogManager.getLogger(UserController.class);
 
 	@Autowired
-  	private AgendaRepository repository;
+  	private UserRepository repository;
 
 	@CrossOrigin(origins = "*")
-	@GetMapping("/agenda")
-	public List<Agenda> obtenerAgenda() {
-		List<Agenda> response = repository.findAll();
-		return response;
-
-	}
-
-	@CrossOrigin(origins = "*")
-	@PostMapping("/agenda")
-	public Agenda agendar(@RequestBody Agenda body) {
+	@PostMapping("/user")
+	public User logear(@RequestBody User body) {
 		
 	repository.save(body);
 	logger.info("feo");
@@ -43,7 +35,15 @@ public class AgendaController {
 		return body;
 	}
 
+	@CrossOrigin(origins = "*")
+	@GetMapping("/user")
+	public List<User> obtenerUser() {
+		List<User> response = repository.findAll();
+		return response;
 
+	}
+
+	
 
 
 }
