@@ -17,15 +17,15 @@ export class ReservasService {
     return this.http.get('http://localhost:8080/agenda');
   }
 
-  login(user: any): Observable<any> {
+  register(user: any): Observable<any> {
     return this.http.post("http://localhost:8080/user", user);
   }
 
-  obtenerLogin(): Observable<any> {
-    return this.http.get("http://localhost:8080/user");
+  login(user:any): Observable<any> {
+    return this.http.post("http://localhost:8080/login", user);
   }
 
-  setToken(token: string) {
+  setToken(token: any) {
     this.cookies.set("token", token);
   }
   getToken() {

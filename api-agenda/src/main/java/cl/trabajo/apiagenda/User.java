@@ -7,7 +7,7 @@ public class User {
     private String password;
     private int nivel;
 
-    public void User(String user, String password) {
+    public void User(String user, String password, int nivel) {
         this.user = user;
         this.password = password;
         this.nivel= nivel;

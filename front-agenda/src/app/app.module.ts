@@ -51,7 +51,7 @@ import { RegisterComponent } from './pages/register/register.component';
     AgGridModule.withComponents([]),
     MatTableModule
     ],
-  providers: [CookieService],
+  providers: [CookieService,AgendaLoginComponent],
   entryComponents: [ReservarSalaComponent,AgendaLoginComponent],
   bootstrap: [AppComponent],
 })

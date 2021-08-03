@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
 import { Observable } from "rxjs";
 import { AgendaLoginComponent } from "../pages/agenda-login/agenda-login.component";
-import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardProfesor implements CanActivate {
+export class AuthGuardAll implements CanActivate {
   activacion:any;
   constructor(public usuario: AgendaLoginComponent, private cookieService: CookieService ) { }
 
@@ -18,7 +18,7 @@ export class AuthGuardProfesor implements CanActivate {
     state: RouterStateSnapshot
   ): any {
     this.activacion = this.cookieService.get('nivel')
-    if (this.activacion === '1'){
+    if (this.activacion === '2'||'1'){
       return true;
     } else{
 

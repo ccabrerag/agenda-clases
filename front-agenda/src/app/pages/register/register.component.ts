@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     const user = { user: this.user, password: this.password, nivel:this.nivel };
-    this.reservas.login(user).subscribe(data => {
+    this.reservas.register(user).subscribe(data => {
       console.log(data);
     });
     this.router.navigate(['/login']);

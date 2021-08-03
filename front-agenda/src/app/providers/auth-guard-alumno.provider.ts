@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angular/router";
+import { CookieService } from "ngx-cookie-service";
 import { Observable } from "rxjs";
 import { AgendaLoginComponent } from "../pages/agenda-login/agenda-login.component";
 
@@ -8,19 +9,22 @@ import { AgendaLoginComponent } from "../pages/agenda-login/agenda-login.compone
   providedIn: 'root'
 })
 export class AuthGuardAlumno implements CanActivate {
-  constructor(public usuario: AgendaLoginComponent) {}
+  activacion:any;
+  constructor(public usuario: AgendaLoginComponent, private cookieService: CookieService ) { }
+
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): any {
-    let canActivate = false;
-    const permiso = this.usuario.nivel;
-    if (this.usuario.usuarioActual.filter((usuario: any) => permiso === 2)) { 
-     }
-        else {
-      //navegar a un componente de error
-    }
+    this.activacion = this.cookieService.get('nivel')
+    if (this.activacion === '2'){
+      return true;
+    } else{
 
+      return false;
+
+    };
+    
   }
 }
